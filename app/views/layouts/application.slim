@@ -1,0 +1,23 @@
+html
+  head
+    title Vademekum
+    link rel="stylesheet" href="/stylesheets/application.css" type="text/css" media="all"
+
+  body
+    div.container
+      div.navbar.navbar-fixed-top
+        div.navbar-inner
+            div.container
+              span.brand Vademekum - Josef Pospíšil
+              ul.nav
+                - items.each do |item|
+                  li class=active(item.first)
+                    a href=item.first = item.last
+
+      div#content
+        == yield
+      footer.footer
+        h3.pull-right
+          a href='http://vademekum.edoktorand.czu.cz' Vademekum
+        h4 Rozvojový program Inovace
+
