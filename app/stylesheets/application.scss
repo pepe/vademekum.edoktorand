@@ -14,7 +14,11 @@
 .metadata {
   text-align: right;
   margin-top: 18px;
-  small {padding-bottom: 18px;display: block;}
+  small {
+    float: left;
+    padding-bottom: 18px;
+    display: block;
+  }
 }
 
 form#survey {
@@ -40,3 +44,9 @@ footer.footer {
   padding: 35px 0 36px;
   border-top: 1px solid #E5E5E5;
 }
+
+.dashboard .type {
+  float: right;
+  background-color: #880;
+}
+

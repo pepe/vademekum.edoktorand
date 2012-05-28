@@ -2,8 +2,10 @@ h1 =t :wall
 ul class='dashboard'
   - @documents.each do |doc|
     li.well.span3
-      div.type =t :document, scope: :type
+      div.label.type =t :document, scope: :type
       h3 = doc.name
       p.description = doc.description
       p.metadata
+        small #{t :created_at}: #{l(doc.created_at, format: :short)}
         a.btn.btn-primary href=url(:document, id: doc.id) =t :view
+
