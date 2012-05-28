@@ -7,8 +7,7 @@ RSpec.configure do |conf|
 end
 
 def app
-  ##
-  # You can handle all padrino applications using instead:
-  #   Padrino.application
-  Vademekum.tap { |app|  }
+  Padrino.application
 end
+
+Capybara.app = Padrino.application

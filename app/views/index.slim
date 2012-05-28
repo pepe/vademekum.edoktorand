@@ -1,35 +1,9 @@
-#dahsboard
+h1 =t :wall
 ul class='dashboard'
-  li.well
-    h3.name Kontrolní dotazník
-    p.description
-      | Kontrolní dotazník by měl posloužit zejména studentům, kteří začínají studium v DSP na ČZU v Praze. Nejedná se o vyčerpávající seznam, ale o pomůcku, a proto ho bude v některých případech nutné upravit, aby vyhovoval potřebám a odpovídal situaci jednotlivých doktorandů.
-    == partial 'buttons'
-  li.well
-    h3.name Setkání se školiteli
-    p.description
-      | Všechna setkání se školitelem by měla být zaznamenána. Existují různé postupy, zde je uvedeno jen několik příkladů. Nicméně způsob, jakým budete záznamy provádět, je na dohodě mezi vámi a vaším školitelem –  i když musí odpovídat postupu oficiálně schválenému katedrou.
-    == partial 'buttons'
-  li.well
-    h3.name Školicí a vzdělávací kurzy
-    p.description
-      | Během svého studia v DSP na ČZU v Praze byste si měli vést záznamy o veškerých oficiálně navštěvovaných vzdělávacích kurzech, ať už pořádaných katedrou, fakultou nebo organizovaných jiným subjektem mimo rámec ČZU.. Tyto záznamy by měl mít k dispozici i váš školitel.
-    == partial 'buttons'
-  li.well
-    h3 Očekávání studentů doktorského programu
-    p.description
-      | Jak se dozvíte, co se od vás jako doktoranda očekává a jaká očekávání můžete mít vy ve vztahu k univerzitě, fakultě/katedře a vašemu školiteli, případně konzultantům?
-    p.metadata
-      button.btn.btn-primary href='/documents'
-        | Prohlédnout
-  li.well
-    h3 Požadavky oborových rad na vzdělávání
-    p.description
-      | Oborové rady hrají důležitou roli při vymezování standardů a nejlepší praxe pro vzdělávání studentů zařazených do doktorských studijních programů.  Tento dokument je společným prohlášením o dovednostech, které by si měli studenti doktorských programů během studia osvojit.
-    p.metadata
-      a.btn.btn-primary href='/documents' Prohlédnout
-  li.well
-    h3.name Stanovení potřeb v oblasti vzdělávání a rozvoje
-    p.description
-      | Tento audit je navržen tak, aby vám pomohl definovat (na základě Společných požadavků) vaše silné a slabé stránky. Pomocí výroků na následujících stránkách si vytvoříte přehled o tom, ve kterých oblastech si obzvláště věříte a které ovládáte a na kterých ještě musíte zapracovat. Máte rovněž možnost se
-    == partial 'buttons'
+  - @documents.each do |doc|
+    li.well.span3
+      div.type =t :document, scope: :type
+      h3 = doc.name
+      p.description = doc.description
+      p.metadata
+        a.btn.btn-primary href=url(:document, id: doc.id) =t :view

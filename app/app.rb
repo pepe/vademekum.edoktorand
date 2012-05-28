@@ -7,6 +7,7 @@ class Vademekum < Padrino::Application
 
   enable :sessions
 
+  I18n.default_locale = :en
   ##
   # Caching support
   #
