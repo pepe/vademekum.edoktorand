@@ -1,0 +1,13 @@
+allow_dynamic_fields: false
+development:
+  sessions:
+    default:
+      database: vademekum_development
+      hosts:
+        - localhost:27017
+test:
+  sessions:
+    default:
+      database: vademekum_test
+      hosts:
+        - localhost:27017
