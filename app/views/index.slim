@@ -1,8 +1,10 @@
 h1 =t :wall
 ul class='dashboard'
   - @documents.each do |doc|
-    li.well.span3
-      div.label.type =t :document, scope: :type
+    li.well.span4
+      div.types
+        - doc.types.each do |type|
+          div.label.type =t type, scope: :type
       h3 = doc.name
       p.description = doc.description
       p.metadata

@@ -1,0 +1,4 @@
+.document
+  h1 = @document.name
+  .well = @document.description
+  == markdown2html(@document.body)

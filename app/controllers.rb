@@ -22,8 +22,8 @@ Vademekum.controllers  do
   end
 
   get :document, with: :id do
-    @body = Document.find(params[:id]).body
-    render 'markdown'
+    @document = Document.find(params[:id])
+    render 'document'
   end
 
   get :survey do

@@ -1,3 +1,10 @@
 cs:
   wall: Vaše zeď
   view: Prohlédnout
+  created_at: Vytvořen
+  type:
+    wall: Zeď
+    records: Záznamy
+    expectations: Očekávání
+    plan: Plán
+    analysis: Analýza

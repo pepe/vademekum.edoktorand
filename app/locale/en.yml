@@ -1,6 +1,10 @@
 en:
   wall: Your wall
   view: View
-  type:
-    document: Document
   created_at: Created at
+  type:
+    wall: Wall
+    records: Records
+    expectations: Expectations
+    plan: Plan
+    analysis: Analysis

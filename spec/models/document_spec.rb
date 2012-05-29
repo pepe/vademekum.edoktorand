@@ -1,17 +1,16 @@
 require 'spec_helper'
 
 describe Document do
-  it "can be initialized" do
-    subject.should respond_to(:new_record?)
-  end
+  subject { Document.create(name: 'Basic',
+                            description: 'Some basic document',
+                            body: '# Some basic document',
+                            types: ['expectations', 'wall']) }
 
   context "with attributes" do
-    subject { Document.create(name: 'Basic',
-                              description: 'Some basic document',
-                              body: '# Some basic document') }
     its(:name) { should eq('Basic') }
     its(:description) { should eq('Some basic document') }
     its(:body) { should eq('# Some basic document') }
+    its(:types) { should include('wall') }
   end
 
   after :all do
