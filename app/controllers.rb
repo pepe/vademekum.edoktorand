@@ -26,11 +26,7 @@ Vademekum.controllers  do
   end
 
   get :index do
-    docs = Document.all
-    in_column = docs.size / 3
-    in_column += 1 if docs.size % 3 != 0
-    logger.debug in_column
-    @documents = docs.each_slice(in_column)
+    @documents = Document.for_front_page
     render 'index'
   end
 
