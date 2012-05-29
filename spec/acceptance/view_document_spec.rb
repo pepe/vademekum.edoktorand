@@ -14,6 +14,6 @@ feature "View document" do
   end
 
   after :all do
-    Document.destroy_all
+    Document.delete_all
   end
 end
