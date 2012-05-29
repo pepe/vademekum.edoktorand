@@ -5,6 +5,5 @@ class Document
   field :name, type: String
   field :description, type: String
   field :body, type: String
-  field :types, type: Array, default: []
-
+  field :type, type: String
 end

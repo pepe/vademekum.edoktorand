@@ -1,13 +1,14 @@
-h1 =t :wall
-ul class='dashboard'
-  - @documents.each do |doc|
-    li.well.span4
-      div.types
-        - doc.types.each do |type|
-          div.label.type =t type, scope: :type
-      h3 = doc.name
-      p.description = doc.description
-      p.metadata
-        small #{t :created_at}: #{l(doc.created_at, format: :short)}
-        a.btn.btn-primary href=url(:document, id: doc.id) =t :view
-
+h1.title =t :wall
+div.general.hero-unit
+  =t 'general information'
+- @documents.each do |docs_column|
+  div.span4
+    - docs_column.each do |doc|
+      div.well
+        div.types
+          div.label.type =t doc.type, scope: :type
+        h3 = doc.name
+        p.description = doc.description
+        p.metadata
+          small #{t :created_at}: #{l(doc.created_at, format: :short)}
+          a.btn.btn-primary href=url(:document, id: doc.id) =t :view

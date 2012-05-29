@@ -5,17 +5,17 @@ html
     script src="/javascripts/jquery.js" type='text/javascript'
 
   body
-    div.container
-      div.navbar.navbar-fixed-top
-        div.navbar-inner
-          div.container
-            span.brand Vademekum
-            ul.nav
-              - menu_items.each do |item|
-                li class=menu_active?(item.first)
-                  a href=item.first = item.last
+    div.navbar.navbar-fixed-top
+      div.navbar-inner
+        div.container
+          span.brand Vademekum
+          ul.nav
+            - menu_items.each do |item|
+              li class=menu_active?(item.first)
+                a href=item.first = item.last
 
-      div#content
+    div.container
+      div#content.row
         == yield
       footer.footer
         h3.pull-right
