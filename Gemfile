@@ -20,6 +20,7 @@ group :test do
   gem 'rspec'
   gem 'rack-test', require: "rack/test"
   gem 'capybara'
+  gem 'spork', '~> 0.9.0'
 end
 
 

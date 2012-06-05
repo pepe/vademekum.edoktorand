@@ -1,2 +1,4 @@
+--drb
 --color
 --format progress
+--default_path spec/
