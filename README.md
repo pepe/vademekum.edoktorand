@@ -34,9 +34,10 @@ Dále je možné prověřit funkčnost spuštěním testů:
 
     > rspec spec
 
+**Pozor smaže celou databázi a nahradí novými daty!**
+
 Pro spuštění ve vývojářském módu je potřeba v konzoli spustit skript pro
-nahrání příkladových dat. **Pozor smaže celou databázi a nahradí novými
-daty!**:
+nahrání příkladových dat:
 
     > bundle console
     bc > load "db/seed.rb"
