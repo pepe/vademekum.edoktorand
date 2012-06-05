@@ -7,20 +7,27 @@ feature "Front page", type: :request do
                     desc: 'Some basic document',
                     body: '# Some basic document',
                     type: 'expectations')
-    Account.create(login: 'koska', name: 'Joska Koska')
+    account = Account.create(login: 'koska',
+                             name: 'Joska Koska')
+    account.add_badge('toKlatovy')
   end
 
-  scenario "shows user wall with name" do
+  scenario "showing user wall with name" do
     visit '/'
     page.should have_content 'Your wall'
     page.should have_content 'Joska Koska'
   end
 
-  scenario "shows document name, description and type" do
+  scenario "showing document name, description and type" do
     visit '/'
     page.should have_content 'Basic'
     page.should have_content 'Some basic document'
     find('div.type').text.should == 'Expectations'
+  end
+
+  scenario "showing user badges" do
+    visit '/'
+    page.should have_content 'toKlatovy'
   end
 
   after :all do

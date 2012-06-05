@@ -1,12 +1,20 @@
 h1.title =t :wall
-- @documents.each do |docs_column|
-  div.span4
-    - docs_column.each do |doc|
-      div.well
-        div.types
-          div.label.type =t doc.type, scope: :type
-        h3 = doc.name
-        p.desc = doc.desc
-        p.metadata
-          small #{t :created_at}: #{l(doc.created_at, format: :short)}
-          a.btn.btn-primary href=url(:document, id: doc.id) =t :view
+div#documents.span9
+  h2 =t 'documents'
+  - @documents.each do |docs_column|
+    div.span4
+      - docs_column.each do |doc|
+        div.well
+          div.types
+            div.label.type =t doc.type, scope: :type
+          h3 = doc.name
+          p.desc = doc.desc
+          p.metadata
+            small #{t :created_at}: #{l(doc.created_at, format: :short)}
+            a.btn.btn-primary href=url(:document, id: doc.id) =t :view
+div.span3#badges
+  h3 =t 'badges'
+  - current_account.badges.each do |badge|
+    div.well
+      h5 = badge.name
+      =l badge.awarded_at, format: :long

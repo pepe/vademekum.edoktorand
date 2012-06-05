@@ -2,7 +2,7 @@ class Document
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  FRONT_COLUMNS = 3
+  FRONT_COLUMNS = 2
 
   field :name, type: String
   field :desc, type: String

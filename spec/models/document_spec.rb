@@ -22,7 +22,7 @@ describe Document do
     end
 
     it "returns documents in columns" do
-      Document.for_front_page.to_a.size.should == 3
+      Document.for_front_page.to_a.size.should == 2
     end
   end
 
