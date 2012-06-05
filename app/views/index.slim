@@ -6,7 +6,7 @@ h1.title =t :wall
         div.types
           div.label.type =t doc.type, scope: :type
         h3 = doc.name
-        p.description = doc.description
+        p.desc = doc.desc
         p.metadata
           small #{t :created_at}: #{l(doc.created_at, format: :short)}
           a.btn.btn-primary href=url(:document, id: doc.id) =t :view

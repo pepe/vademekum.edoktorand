@@ -3,7 +3,7 @@ class Document
   include Mongoid::Timestamps
 
   field :name, type: String
-  field :description, type: String
+  field :desc, type: String
   field :body, type: String
   field :type, type: String
 
