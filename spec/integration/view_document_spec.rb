@@ -2,15 +2,19 @@
 require 'spec_helper'
 
 feature "View document" do
-  background { Document.create(name: 'Basic',
-                              description: 'Some basic document',
-                              body: '# Some basic document',
-                              types: ['wall', 'expectations']) }
+  background do
+    Document.create(name: 'Basic',
+                    desc: 'Some basic document',
+                    body: '# Some basic document',
+                    type: 'expectations')
+    Account.create(login: 'koska', name: 'Joska Koska')
+  end
 
   scenario "getting to document detail" do
     visit '/'
-    click_link 'View'
+    click_on 'View'
     find('h1').text.should == 'Basic'
+    page.should have_content 'Some basic document'
   end
 
   scenario "getting back to previous page" do

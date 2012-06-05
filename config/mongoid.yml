@@ -1,4 +1,3 @@
-allow_dynamic_fields: false
 development:
   sessions:
     default:
@@ -6,6 +5,8 @@ development:
       hosts:
         - localhost:27017
 test:
+  options:
+    allow_dynamic_fields: false
   sessions:
     default:
       database: vademekum_test
