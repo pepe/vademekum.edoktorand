@@ -13,6 +13,13 @@ feature "View document" do
     find('h1').text.should == 'Basic'
   end
 
+  scenario "getting back to previous page" do
+    visit '/'
+    click_on 'View'
+    click_on 'Back to your wall'
+    page.should have_content('Your wall')
+  end
+
   after :all do
     Document.delete_all
   end

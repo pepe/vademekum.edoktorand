@@ -1,4 +1,7 @@
-.document
-  h1 = @document.name
-  .well = @document.description
+div.right
+  a.btn.btn-primary href=url(:index) =t :back
+div.document
+  h1.title = @document.name
+  div.hero-unit
+    p = @document.desc
   == markdown2html(@document.body)

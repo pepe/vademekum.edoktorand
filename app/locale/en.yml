@@ -2,6 +2,7 @@ en:
   wall: Your wall
   view: View
   created_at: Created at
+  back: Back to your wall
   type:
     wall: Wall
     records: Records
