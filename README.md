@@ -10,7 +10,7 @@ víceméně pro testovací a analytické potřeby.
 
 ### Závislosti
 
-Repozitář se nachází na [https://github.com/pepe/vademekum.edoktorand].
+Repozitář se nachází na [https://github.com/pepe/vademekum.edoktorand](https://github.com/pepe/vademekum.edoktorand).
 
 Po naklonování:
 
@@ -45,4 +45,4 @@ Poté je možno spustit server
 
     > bundle exec padrino start
 
-a stránka je viditelná na adrese [http://localhost:3000].
+a stránka je viditelná na adrese [http://localhost:3000](http://localhost:3000).
