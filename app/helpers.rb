@@ -1,7 +1,22 @@
-# Helper methods defined here can be accessed in any controller or view in the application
-
 Vademekum.helpers do
-  # def simple_helper_method
-  #  ...
-  # end
+  def menu_active?(item)
+    item == request.env['PATH_INFO'] ? 'active' : ''
+  end
+
+  def menu_items
+    { '/' => t(:wall, scope: :type),
+      '/records' => t(:records, scope: :type),
+      '/expectations' => t(:expectations, scope: :type),
+      '/analysis' => t(:analysis, scope: :type),
+      '/plan' => t(:plan, scope: :type) }
+  end
+
+  def markdown2html(md)
+    @html_renderer ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+    @html_renderer.render(md)
+  end
+
+  def current_account
+    Account.first
+  end
 end
