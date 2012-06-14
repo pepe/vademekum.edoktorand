@@ -7,7 +7,7 @@ Vademekum.controllers  do
   end
 
   get :index do
-    @documents = Document.for_front_page
+    @documents = columnize(Document.for_front_page)
     render 'index'
   end
 
@@ -16,7 +16,19 @@ Vademekum.controllers  do
     render 'document'
   end
 
-  get :survey do
-    render 'survey'
+  get :edit, with: :id do
+    @document = Document.find(params[:id])
+    render 'edit'
+  end
+
+  post :update do
+    @document = Document.find(params[:id])
+    @document.update_attributes(params[:document])
+    redirect url(:index)
+  end
+
+  get :type, map: ':type' do
+    @documents = columnize(Document.for_type_page(params[:type]))
+    render 'type'
   end
 end

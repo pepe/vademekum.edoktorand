@@ -13,20 +13,35 @@ describe Document do
     its(:type) { should eq('expectations') }
   end
 
-  context "for front page" do
+  context "when searching" do
     before do
       5.times do |i|
         Document.create(name: "Basic #{i}",
-                        desc: 'Some basic document')
+                        desc: 'Some basic document',
+                        type: i % 2 == 0 ? 'records' : 'expectations')
       end
     end
 
-    it "returns documents in columns" do
-      Document.for_front_page.to_a.size.should == 2
+    context "for front page" do
+      it "returns documents in columns" do
+        Document.for_front_page.size.should == 5
+      end
+    end
+
+    context "for type pages" do
+      it "all documents" do
+        Document.for_type_page('records').size.should == 3
+      end
+    end
+  end
+  context "with types" do
+    it "returns if has type" do
+      subject.type = 'records'
+      subject.is_type?('records')
     end
   end
 
-  after :all do
+  after do
     Document.destroy_all
   end
 end

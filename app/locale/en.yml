@@ -1,8 +1,10 @@
 en:
   wall: Your wall
   view: View
+  edit: Edit
   created_at: Created at
   back: Back to your wall
+  editing: Editing
   type:
     wall: Wall
     records: Records
@@ -11,3 +13,10 @@ en:
     analysis: Analysis
   documents: Documents
   badges: Badges
+  name: Name
+  document:
+    name: Name
+    desc: Description
+    body: Body
+    type: Type
+  save: Save

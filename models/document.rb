@@ -2,17 +2,20 @@ class Document
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  FRONT_COLUMNS = 2
+  FRONT_COLUMNS = 3
 
   field :name, type: String
   field :desc, type: String
   field :body, type: String
   field :type, type: String
 
+  scope :for_type_page, ->(type){ where(type: type) }
+
   def self.for_front_page
-    docs = self.all
-    in_column = docs.size / FRONT_COLUMNS
-    in_column += 1 if docs.size % FRONT_COLUMNS != 0
-    docs.each_slice(in_column)
+    self.all
+  end
+
+  def is_type?(type)
+    self.type == type
   end
 end

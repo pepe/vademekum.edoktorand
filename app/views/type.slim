@@ -1,0 +1,8 @@
+ul.breadcrumb
+  li
+    a href="/" =t 'wall'
+    span class="divider" &nbsp;&frasl;&nbsp;
+  li.active =t params[:type], scope: :type
+
+== partial 'documents'
+

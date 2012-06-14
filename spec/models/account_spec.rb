@@ -1,10 +1,11 @@
 require 'spec_helper'
 
 describe Account do
+  subject { Account.create(login: 'koska',
+                           name: 'Joska Koska',
+                           role: 'admin') }
+
   context "with attributes" do
-    subject { Account.create(login: 'koska',
-                             name: 'Joska Koska',
-                             role: 'admin') }
     its(:login) { should eq('koska') }
     its(:name) { should eq('Joska Koska') }
     its(:role) { should eq('admin') }
@@ -28,6 +29,12 @@ describe Account do
       subject.remove_badge('toKlatovy')
       subject.reload
       subject.should_not have_badge('toKlatovy')
+    end
+  end
+
+  context "with roles" do
+    it "returns if is admin" do
+      subject.should be_admin
     end
   end
 

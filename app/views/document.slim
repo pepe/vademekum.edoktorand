@@ -1,7 +1,10 @@
-div.right
-  a.btn.btn-primary href=url(:index) =t :back
+ul.breadcrumb
+  li
+    a href="/" =t 'wall'
+    span class="divider" &nbsp;&frasl;&nbsp;
+  li.active = @document.name
+
 div.document
-  h1.title = @document.name
   div.hero-unit
     p = @document.desc
   == markdown2html(@document.body)

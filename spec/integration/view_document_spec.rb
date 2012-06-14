@@ -13,18 +13,18 @@ feature "View document" do
   scenario "getting to document detail" do
     visit '/'
     click_on 'View'
-    find('h1').text.should == 'Basic'
-    page.should have_content 'Some basic document'
+    find('div.hero-unit').text.should == 'Some basic document'
   end
 
   scenario "getting back to previous page" do
     visit '/'
     click_on 'View'
-    click_on 'Back to your wall'
+    click_on 'Your wall'
     page.should have_content('Your wall')
   end
 
   after :all do
     Document.delete_all
+    Account.delete_all
   end
 end

@@ -1,6 +1,4 @@
 // This import applies a global reset to any page that imports this stylesheet.
-@import "blueprint/reset";
-
 @import "compass_twitter_bootstrap";
 
 #content {
@@ -17,7 +15,7 @@
   margin-top: 18px;
   small {
     float: left;
-    padding-bottom: 18px;
+    padding: 6px 0px;
     display: block;
   }
 }
@@ -56,12 +54,17 @@ h1.title {
   margin-bottom: 2em;
 }
 
-.right {
-  float: right;
+.badge {
+  padding: 7px 12px;
 }
 
-#badges {
-  .well {
-    padding: 13px;
-  }
+textarea#body {
+  width: 660px;
 }
+
+input[type="text"] {
+  height: 28px;
+  width: 570px;
+}
+
+

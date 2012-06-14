@@ -15,5 +15,9 @@ class Account
   def add_badge(badge)
     self.badges.create(name: badge, awarded_at: Time.now)
   end
+
+  def admin?
+    self.role == 'admin'
+  end
 end
 

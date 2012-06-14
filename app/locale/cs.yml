@@ -1,7 +1,10 @@
 cs:
   wall: Vaše zeď
-  view: Prohlédnout
+  view: Zobrazit
+  edit: Upravit
   created_at: Vytvořen
+  back: Zpět na Vaši zeď
+  editing: Editace
   type:
     wall: Zeď
     records: Záznamy
@@ -10,3 +13,9 @@ cs:
     analysis: Analýza
   documents: Dokumenty
   badges: Odznaky
+  document:
+    name: Jméno
+    desc: Popis
+    body: Tělo
+    type: Typ
+  save: Uložit

@@ -1,0 +1,15 @@
+- @documents.each do |docs_column|
+  div.span4
+    - docs_column.each do |doc|
+      div.well
+        div.types
+          div.label.type =t doc.type, scope: :type
+        h3 = doc.name
+        p.desc = doc.desc
+        p.metadata
+          small #{t :created_at}: #{l(doc.created_at, format: :short)}
+          a.btn.btn-primary href=url(:document, id: doc.id) =t 'view'
+          - if current_account.admin?
+            span.divider &nbsp;
+            a.btn.btn-primary href=url(:edit, id: doc.id) =t 'edit'
+

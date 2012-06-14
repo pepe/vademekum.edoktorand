@@ -19,4 +19,11 @@ Vademekum.helpers do
   def current_account
     Account.first
   end
+
+  def columnize(arr, cols = 3)
+    return [] if arr.empty?
+    in_column = arr.size / cols
+    in_column += 1 if arr.size % cols != 0
+    arr.each_slice(in_column)
+  end
 end
