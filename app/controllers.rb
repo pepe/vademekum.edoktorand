@@ -28,7 +28,7 @@ Vademekum.controllers  do
   end
 
   get :type, map: ':type' do
-    @documents = columnize(Document.for_type_page(params[:type]))
+    @documents = columnize(Document.all_with_type(params[:type]))
     render 'type'
   end
 end

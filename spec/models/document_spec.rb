@@ -30,7 +30,7 @@ describe Document do
 
     context "for type pages" do
       it "all documents" do
-        Document.for_type_page('records').size.should == 3
+        Document.all_with_type('records').size.should == 3
       end
     end
   end

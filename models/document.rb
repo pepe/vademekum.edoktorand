@@ -9,7 +9,7 @@ class Document
   field :body, type: String
   field :type, type: String
 
-  scope :for_type_page, ->(type){ where(type: type) }
+  scope :all_with_type, ->(type){ where(type: type) }
 
   def self.for_front_page
     self.all
