@@ -1,0 +1,11 @@
+ul.breadcrumb
+  li
+    a href="/" =t 'wall'
+    span class="divider" &nbsp;&frasl;&nbsp;
+  li.active = @questionnaire.name
+
+div.questionnaire
+  div.hero-unit
+    p = @questionnaire.desc
+  == markdown2html(@questionnaire.body)
+

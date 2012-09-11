@@ -1,0 +1,16 @@
+- @questionnaires.each do |quest_column|
+  div.span4
+    - quest_column.each do |quest|
+      div.well
+        div.types
+          div.label.type =t quest.type, scope: :type
+        h3 = quest.name
+        p.desc = quest.desc
+        p.metadata
+          small #{t :created_at}: #{l(quest.created_at, format: :short)}
+          a.btn.btn-primary href=url(:questionnaire, id: quest.id) =t 'view'
+          - if current_account.admin?
+            span.divider &nbsp;
+            a.btn.btn-primary href=url(:edit, id: quest.id) =t 'edit'
+
+

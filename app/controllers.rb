@@ -16,6 +16,7 @@ Vademekum.controllers  do
   get :index do
     extend Renderer::Html
     @documents = columnize(Document.for_front_page)
+    @questionnaires = columnize(Questionnaire.for_front_page)
     render 'index'
   end
 
@@ -40,5 +41,10 @@ Vademekum.controllers  do
     extend Renderer::Html
     @documents = columnize(Document.all_with_type(params[:type]))
     render 'type'
+  end
+
+  get :questionnaire, with: :id do
+    @questionnaire = Questionnaire.find(params[:id])
+    render 'questionnaire'
   end
 end
