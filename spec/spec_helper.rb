@@ -3,6 +3,8 @@ require File.expand_path(File.dirname(__FILE__) + "/../config/boot")
 require 'capybara/rspec'
 
 Spork.prefork do
+  FactoryGirl.find_definitions
+
   RSpec.configure do |conf|
     conf.include Rack::Test::Methods
   end

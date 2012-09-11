@@ -3,11 +3,8 @@ require 'spec_helper'
 
 feature "View document" do
   background do
-    Document.create(name: 'Basic',
-                    desc: 'Some basic document',
-                    body: '# Some basic document',
-                    type: 'expectations')
-    Account.create(login: 'koska', name: 'Joska Koska')
+    FactoryGirl.create(:document)
+    FactoryGirl.create(:account)
   end
 
   scenario "getting to document detail" do
