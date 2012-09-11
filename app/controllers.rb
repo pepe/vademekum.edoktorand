@@ -1,17 +1,26 @@
 #encoding: utf-8
 Vademekum.controllers  do
   before do
+    extend Utilities
     if params[:locale]
       I18n.locale = params[:locale]
     end
   end
 
+  helpers do
+    def current_account
+      Account.first
+    end
+  end
+
   get :index do
+    extend Renderer::Html
     @documents = columnize(Document.for_front_page)
     render 'index'
   end
 
   get :document, with: :id do
+    extend Renderer::Html
     @document = Document.find(params[:id])
     render 'document'
   end
@@ -28,6 +37,7 @@ Vademekum.controllers  do
   end
 
   get :type, map: ':type' do
+    extend Renderer::Html
     @documents = columnize(Document.all_with_type(params[:type]))
     render 'type'
   end
