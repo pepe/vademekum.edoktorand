@@ -16,7 +16,6 @@ Vademekum.controllers  do
   get :index do
     extend Renderer::Html
     @documents = columnize(Document.for_front_page)
-    @questionnaires = columnize(Questionnaire.for_front_page)
     render 'index'
   end
 
@@ -43,8 +42,15 @@ Vademekum.controllers  do
     render 'type'
   end
 
-  get :questionnaire, with: :id do
+  get :fill, with: :id do
+    extend Renderer::Questionnaire
     @questionnaire = Questionnaire.find(params[:id])
     render 'questionnaire'
+  end
+
+  post :sheet do
+    flash[:notification] = t(:submited_successfully)
+
+    redirect url(:index)
   end
 end

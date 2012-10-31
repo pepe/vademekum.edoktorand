@@ -21,5 +21,13 @@ module Utilities
     in_column += 1 if arr.size % cols != 0
     arr.each_slice(in_column)
   end
+
+  def action_url(doc)
+    [doc.is_a?(Questionnaire) ? :fill : :document, id: doc.id]
+  end
+
+  def action(doc)
+    doc.is_a?(Questionnaire) ? :fill : :view
+  end
 end
 

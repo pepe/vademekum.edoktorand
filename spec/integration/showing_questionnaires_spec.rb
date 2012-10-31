@@ -14,12 +14,23 @@ feature "Showing questionnaires", type: :request do
 
   scenario "showing questionnaire form" do
     visit '/'
-    click_on 'View'
+    click_on 'Fill'
+    page.should have_css('#questionnaire')
     find('div.hero-unit').text.should == 'Some basic questionnaire'
   end
 
+  scenario "filling sheet" do
+    visit '/'
+    click_on 'Fill'
+    check "yes"
+    choose "simply red"
+    fill_in "how-big", with: "45"
+    click_on "Submit"
+    page.should have_content('Submited successfully')
+  end
+
   after do
-    Questionnaire.delete_all
+    Document.delete_all
     Account.delete_all
   end
 end

@@ -10,7 +10,7 @@ class Questionnaire < Document
         type = 'check'
         options = fields[1].split("\n")[1..-1]
       when 'ooo'
-        type = 'radio'
+        type = 'choose'
         options = fields[1].split("\n")[1..-1]
       when '___'
         type = 'write'

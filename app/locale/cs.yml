@@ -1,7 +1,10 @@
 cs:
   wall: Vaše zeď
   view: Zobrazit
+  fill: Vyplnit
   edit: Upravit
+  submit: Odeslat
+  submited_successfully: Odesláno úspěšně
   created_at: Vytvořen
   back: Zpět na Vaši zeď
   editing: Editace

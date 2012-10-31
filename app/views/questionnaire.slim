@@ -7,5 +7,10 @@ ul.breadcrumb
 div.questionnaire
   div.hero-unit
     p = @questionnaire.desc
-  == markdown2html(@questionnaire.body)
+
+  form#questionnaire action="/sheet" method="post"
+    - @questionnaire.questions.each do |quest|
+      == question quest
+
+    input type="submit" value=t(:submit)
 

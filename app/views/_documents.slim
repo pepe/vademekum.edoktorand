@@ -8,8 +8,8 @@
         p.desc = doc.desc
         p.metadata
           small #{t :created_at}: #{l(doc.created_at, format: :short)}
-          a.btn.btn-primary href=url(:document, id: doc.id) =t 'view'
+          a.btn.btn-primary href=url(*action_url(doc)) =t action(doc)
           - if current_account.admin?
             span.divider &nbsp;
-            a.btn.btn-primary href=url(:edit, id: doc.id) =t 'edit'
+            a.btn.btn-primary href=url(:edit, id: doc.id) =t :edit
 

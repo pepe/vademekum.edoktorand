@@ -22,8 +22,8 @@ describe Questionnaire do
         subject.questions[1].should == ['How big?', 'write', 'Here goes head size']
       end
 
-      it "returs question as text, type and options for radio question" do
-        subject.questions.last.should == ['Color?', 'radio', ['red', 'simply red']]
+      it "returs question as text, type and options for choose question" do
+        subject.questions.last.should == ['Color?', 'choose', ['red', 'simply red']]
       end
     end
 

@@ -1,7 +1,10 @@
 en:
   wall: Your wall
   view: View
+  fill: Fill
   edit: Edit
+  submit: Submit
+  submited_successfully: Submited successfully
   created_at: Created at
   back: Back to your wall
   editing: Editing

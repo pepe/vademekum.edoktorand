@@ -3,8 +3,9 @@ FactoryGirl.define do
     name 'Basic questionnaire'
     desc 'Some basic questionnaire'
     type 'records'
-    body <<body
+    body <<BODY
 ??? Do you have head?
+
 xxx
 yes
 
@@ -17,7 +18,7 @@ ___ Here goes head size
 ooo
 red
 simply red
-body
+BODY
   end
 
   factory :document do
