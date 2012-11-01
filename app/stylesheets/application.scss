@@ -20,34 +20,49 @@
   }
 }
 
-form#survey {
+form#questionnaire {
   legend {
     border: none;
     padding-left: 20ex;
   }
-  .table {
-    margin: 18px auto;
-    th {
-      width: 890px;
-      label { font-weight: bold}
-    }
+  p.question {
+    width: 80%;
+    font-weight: bolder;
+    font-size: larger;
+  }
+  .answer, .question {
+    float: left;
+  }
+  hr.clear {
+    clear: both;
+  }
+  label, input {
+    display: inline;
+  }
+  textarea {
+    width: 60%;
+    height: 10em;
   }
   div.actions {
     text-align: right;
   }
 }
 
-footer.footer {
+footer {
   clear: both;
   margin-top: 45px;
-  padding: 35px 0 36px;
+  padding: 16px 36px;
   border-top: 1px solid #E5E5E5;
+  text-align: right;
 }
 
-.types .type {
-  float: right;
-  background-color: #880;
-  margin-left: 1ex;
+footer img {
+  float: left;
+}
+
+footer h3 {
+  margin-top: 15px;
+
 }
 
 h1.title {

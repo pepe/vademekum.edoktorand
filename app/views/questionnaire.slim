@@ -11,6 +11,7 @@ div.questionnaire
   form#questionnaire action="/sheet" method="post"
     - @questionnaire.questions.each do |quest|
       == question quest
+      hr.clear
 
     input type="submit" value=t(:submit)
 
