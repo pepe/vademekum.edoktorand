@@ -9,7 +9,6 @@ feature "Front page", type: :request do
                     type: 'expectations')
     account = Account.create(login: 'koska',
                              name: 'Joska Koska')
-    account.add_badge('toKlatovy')
   end
 
   scenario "showing user wall with name" do
