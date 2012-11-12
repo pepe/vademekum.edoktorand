@@ -9,5 +9,9 @@ class Account
   def admin?
     self.role == 'admin'
   end
+
+  def authenticated?(token)
+    token == Digest::SHA1.hexdigest(login)
+  end
 end
 

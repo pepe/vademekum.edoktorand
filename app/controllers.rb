@@ -58,9 +58,7 @@ Vademekum.controllers  do
 
   get :authenticate, with: [:login, :token] do
     account = Account.where(login: params[:login]).first
-    #TODO this should be in model
-    token = Digest::SHA1.hexdigest(account.login)
-    redirect url(:not_logged) unless token == params[:token]
+    redirect url(:not_logged) unless account.authenticated?(params[:token])
     session[:current_account] = account.id.to_s
     redirect url(:index)
   end
