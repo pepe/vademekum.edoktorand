@@ -3,12 +3,9 @@ require 'spec_helper'
 
 feature "Front page", type: :request do
   background do
-    Document.create(name: 'Basic',
-                    desc: 'Some basic document',
-                    body: '# Some basic document',
-                    type: 'expectations')
-    account = Account.create(login: 'koska',
-                             name: 'Joska Koska')
+    FactoryGirl.create(:document)
+    FactoryGirl.create(:account)
+    spec_auth("koska")
   end
 
   scenario "showing user wall with name" do
@@ -21,6 +18,6 @@ feature "Front page", type: :request do
     visit '/'
     page.should have_content 'Basic'
     page.should have_content 'Some basic document'
-    find('div.type').text.should == 'Expectations'
+    find('div.type').text.should == 'Records'
   end
 end

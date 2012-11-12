@@ -7,6 +7,7 @@ en:
   submited_successfully: Submited successfully
   created_at: Created at
   back: Back to your wall
+  not_logged_in: You are not logged in. Please do so from eDoktorand.
   editing: Editing
   type:
     wall: Wall

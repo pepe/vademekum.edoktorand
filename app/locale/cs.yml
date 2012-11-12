@@ -8,6 +8,7 @@ cs:
   created_at: Vytvořen
   back: Zpět na Vaši zeď
   editing: Editace
+  not_logged_in: Nejste přihlášen/-a. Prosím uděljte tak na eDoktorandovi.
   type:
     wall: Zeď
     records: Záznamy

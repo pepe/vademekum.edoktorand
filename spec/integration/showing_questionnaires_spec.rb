@@ -5,6 +5,7 @@ feature "Showing questionnaires", type: :request do
   background do
     FactoryGirl.create(:questionnaire)
     FactoryGirl.create(:account)
+    spec_auth("koska")
   end
 
   scenario "showing questionnaire on home page" do

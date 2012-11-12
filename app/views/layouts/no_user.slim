@@ -1,0 +1,25 @@
+html
+  head
+    title Vademekum
+    link rel="stylesheet" href="/stylesheets/application.css" type="text/css" media="all"
+    script src="/javascripts/jquery.js" type='text/javascript'
+
+  body
+    div.navbar.navbar-fixed-top
+      div.navbar-inner
+        div.container
+          span.brand
+            | Vademekum&nbsp;-&nbsp;
+          ul.nav
+
+    div.container
+      div#content.row
+        == yield
+    footer
+      img src="images/logo.jpg"
+      h3
+        a href='http://vademekum.edoktorand.czu.cz' Vademekum
+
+      h4 Rozvojový program Inovace
+
+

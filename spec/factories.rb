@@ -25,7 +25,7 @@ BODY
     name 'Basic document'
     desc 'Some basic document'
     body '# Some basic document'
-    type 'expectations'
+    type 'records'
   end
 
   factory :account do
@@ -37,5 +37,12 @@ BODY
     login 'admin'
     name 'Adminus Maximus'
     role 'admin'
+  end
+
+  factory :expectations_document, class: Document do
+    name 'Expectations'
+    desc 'Some expectations document'
+    body '# Some expectations document'
+    type 'expectations'
   end
 end

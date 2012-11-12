@@ -5,6 +5,7 @@ feature "View document" do
   background do
     FactoryGirl.create(:document)
     FactoryGirl.create(:account)
+    spec_auth("koska")
   end
 
   scenario "getting to document detail" do

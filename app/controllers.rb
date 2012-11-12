@@ -5,11 +5,15 @@ Vademekum.controllers  do
     if params[:locale]
       I18n.locale = params[:locale]
     end
+
+    if !current_account && !request.path_info.match(/not_logged|authenticate/)
+      redirect "not_logged"
+    end
   end
 
   helpers do
     def current_account
-      Account.first
+      Account.find(session[:current_account]) if session[:current_account]
     end
   end
 
@@ -36,12 +40,6 @@ Vademekum.controllers  do
     redirect url(:index)
   end
 
-  get :type, map: ':type' do
-    extend Renderer::Html
-    @documents = columnize(Document.all_with_type(params[:type]))
-    render 'type'
-  end
-
   get :fill, with: :id do
     extend Renderer::Questionnaire
     @questionnaire = Questionnaire.find(params[:id])
@@ -52,5 +50,24 @@ Vademekum.controllers  do
     flash[:notification] = t(:submited_successfully)
 
     redirect url(:index)
+  end
+
+  get :not_logged do
+    render "not_logged", layout: :no_user
+  end
+
+  get :authenticate, with: [:login, :token] do
+    account = Account.where(login: params[:login]).first
+    #TODO this should be in model
+    token = Digest::SHA1.hexdigest(account.login)
+    redirect url(:not_logged) unless token == params[:token]
+    session[:current_account] = account.id.to_s
+    redirect url(:index)
+  end
+
+  get :type, map: ':type' do
+    extend Renderer::Html
+    @documents = columnize(Document.all_with_type(params[:type]))
+    render 'type'
   end
 end

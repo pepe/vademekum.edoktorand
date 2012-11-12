@@ -18,6 +18,10 @@ Spork.prefork do
     Padrino.application
   end
 
+  def spec_auth(login)
+    visit "/authenticate/#{login}/#{Digest::SHA1.hexdigest(login)}"
+  end
+
   Capybara.app = Padrino.application
 end
 

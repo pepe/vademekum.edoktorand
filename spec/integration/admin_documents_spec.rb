@@ -3,17 +3,15 @@ require 'spec_helper'
 
 feature "Administer documents" do
   background do
-    Document.create(name: 'Basic',
-                    desc: 'Some basic document',
-                    body: '# Some basic document',
-                    type: 'expectations')
-    Account.create(login: 'koska', name: 'Joska Koska', role: 'admin')
+    FactoryGirl.create(:document)
+    FactoryGirl.create(:admin)
+    spec_auth("admin")
   end
 
   scenario "getting to edit the document" do
     visit '/'
     click_on 'Edit'
-    find('li.active').text.should == 'Editing: Basic'
+    find('li.active').text.should == 'Editing: Basic document'
     page.should have_css('input#name')
     page.should have_css('input#desc')
     page.should have_css('textarea#body')

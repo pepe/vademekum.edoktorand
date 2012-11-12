@@ -3,22 +3,16 @@ require 'spec_helper'
 
 feature "Type pages", type: :request do
   background do
-    Document.create(name: 'Expectations',
-                    desc: 'Some expectations document',
-                    body: '# Some expectations document',
-                    type: 'expectations')
-    Document.create(name: 'Records',
-                    desc: 'Some records document',
-                    body: '# Some records document',
-                    type: 'records')
-    account = Account.create(login: 'koska',
-                             name: 'Joska Koska')
+    FactoryGirl.create(:document)
+    FactoryGirl.create(:expectations_document)
+    FactoryGirl.create(:account)
+    spec_auth("koska")
   end
 
   scenario "showing records documents" do
     visit '/'
     click_on 'Records'
-    page.should have_content('Some records document')
+    page.should have_content('Some basic document')
   end
 
   scenario "showing expectations documents" do
