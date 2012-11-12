@@ -54,16 +54,23 @@ footer {
   padding: 16px 36px;
   border-top: 1px solid #E5E5E5;
   text-align: right;
+
+  img {
+    float: left;
+  }
+
+  h4 {
+    margin: 26px 0px;
+
+  }
+
+  h3 {
+    margin: 10px 0px;
+
+  }
+
 }
 
-footer img {
-  float: left;
-}
-
-footer h3 {
-  margin-top: 15px;
-
-}
 
 h1.title {
   margin-bottom: 2em;
