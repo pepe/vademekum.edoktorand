@@ -40,8 +40,4 @@ describe Document do
       subject.is_type?('records')
     end
   end
-
-  after do
-    Document.destroy_all
-  end
 end

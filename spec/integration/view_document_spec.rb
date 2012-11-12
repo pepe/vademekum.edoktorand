@@ -19,9 +19,4 @@ feature "View document" do
     click_on 'Your wall'
     page.should have_content('Your wall')
   end
-
-  after :all do
-    Document.delete_all
-    Account.delete_all
-  end
 end

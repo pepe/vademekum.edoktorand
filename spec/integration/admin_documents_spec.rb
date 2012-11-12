@@ -28,8 +28,4 @@ feature "Administer documents" do
     page.should have_content 'Advanced'
   end
 
-  after :all do
-    Document.delete_all
-    Account.delete_all
-  end
 end

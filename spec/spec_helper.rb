@@ -7,6 +7,11 @@ Spork.prefork do
 
   RSpec.configure do |conf|
     conf.include Rack::Test::Methods
+
+    conf.after do
+      Document.delete_all
+      Account.delete_all
+    end
   end
 
   def app

@@ -32,4 +32,10 @@ BODY
     login 'koska'
     name 'Joska Koska'
   end
+
+  factory :admin, class: Account do
+    login 'admin'
+    name 'Adminus Maximus'
+    role 'admin'
+  end
 end

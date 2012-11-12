@@ -14,6 +14,11 @@ describe Questionnaire do
     its(:type) { should eq('expectations') }
 
     context "with questions" do
+      let(:questionnaire) { Questionnaire.create(name: 'Basic',
+                            desc: 'Some basic document',
+                            body:
+      "??? Do you have head?\n\nxxx\nyes\n\n??? How big?\n\n___ Here goes head size\n\n??? Color?\n\nooo\nred\nsimply red",
+                              type: 'expectations') }
       it "returs question as text, type and options for check question" do
         subject.questions.first.should == ['Do you have head?', 'check', ['yes']]
       end
@@ -28,14 +33,14 @@ describe Questionnaire do
     end
 
     context "when sanitizing input" do
-    subject { Questionnaire.create(name: 'Basic',
+    let(:questionnaire) { Questionnaire.create(name: 'Basic',
                               desc: 'Some basic document',
                               body:
       "??? Do you have head?\r\n\r\nxxx\r\nyes\r\n\r\n??? How big?\r\n\r\n___ Here goes head size\r\n\r\n??? Color?\r\n\r\nooo\r\nred\nsimply red",
                               type: 'expectations') }
       it "it converts \\r\\n to \\n" do
-        subject.save
-        subject.body.should eql(
+        questionnaire.save
+        questionnaire.body.should eql(
           "??? Do you have head?\n\nxxx\nyes\n\n??? How big?\n\n___ Here goes head size\n\n??? Color?\n\nooo\nred\nsimply red",
         )
       end

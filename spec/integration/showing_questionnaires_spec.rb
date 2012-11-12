@@ -28,10 +28,5 @@ feature "Showing questionnaires", type: :request do
     click_on "Submit"
     page.should have_content('Submited successfully')
   end
-
-  after do
-    Document.delete_all
-    Account.delete_all
-  end
 end
 

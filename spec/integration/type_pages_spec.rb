@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 feature "Type pages", type: :request do
-  background :all do
+  background do
     Document.create(name: 'Expectations',
                     desc: 'Some expectations document',
                     body: '# Some expectations document',
@@ -31,11 +31,6 @@ feature "Type pages", type: :request do
     visit '/'
     click_on 'Analysis'
     page.should_not have_content('Error')
-  end
-
-  after :all do
-    Document.delete_all
-    Account.delete_all
   end
 end
 

@@ -23,15 +23,4 @@ feature "Front page", type: :request do
     page.should have_content 'Some basic document'
     find('div.type').text.should == 'Expectations'
   end
-
-  scenario "showing user badges" do
-    pending 'Think how to show them'
-    visit '/'
-    page.should have_content 'toKlatovy'
-  end
-
-  after :all do
-    Document.delete_all
-    Account.delete_all
-  end
 end
