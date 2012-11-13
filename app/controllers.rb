@@ -46,10 +46,15 @@ Vademekum.controllers  do
     render 'questionnaire'
   end
 
-  post :sheet do
+  post :sheet, with: :id do
     flash[:notification] = t(:submited_successfully)
+    questionnaire = Questionnaire.find(params[:id])
 
-    redirect url(:index)
+    path = Renderer::Questionnaire::PDF.new(questionnaire.name,
+                                           params,
+                                           questionnaire.questions).prepare_file
+    content_type "application/pdf"
+    send_file path
   end
 
   get :not_logged do

@@ -8,7 +8,7 @@ div.questionnaire
   div.hero-unit
     p = @questionnaire.desc
 
-  form#questionnaire action="/sheet" method="post"
+  form#questionnaire action=url(:sheet, id: @questionnaire.id)  method="post"
     - @questionnaire.questions.each do |quest|
       == question quest
       hr.clear

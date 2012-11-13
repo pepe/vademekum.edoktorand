@@ -13,6 +13,7 @@ gem 'compass_twitter_bootstrap'
 gem 'slim'
 gem 'mongoid', git: 'git://github.com/mongoid/mongoid.git'
 gem 'redcarpet'
+gem "prawn"
 
 # Test requirements
 group :test do
@@ -21,6 +22,7 @@ group :test do
   gem 'capybara'
   gem 'spork', '~> 0.9.0'
   gem 'factory_girl'
+  gem 'pdf-inspector', require: 'pdf/inspector'
 end
 
 

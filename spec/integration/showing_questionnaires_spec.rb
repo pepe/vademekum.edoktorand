@@ -20,14 +20,23 @@ feature "Showing questionnaires", type: :request do
     find('div.hero-unit').text.should == 'Some basic questionnaire'
   end
 
-  scenario "filling sheet" do
+  scenario "submitting sheet" do
     visit '/'
     click_on 'Fill'
     check "yes"
     choose "simply red"
     fill_in "how-big", with: "45"
     click_on "Submit"
-    page.should have_content('Submited successfully')
+  end
+
+  scenario "downloading sheet pdf" do
+    visit '/'
+    click_on 'Fill'
+    check "yes"
+    choose "simply red"
+    fill_in "how-big", with: "45"
+    click_on "Submit"
+    page.response_headers["Content-Type"].should match(Regexp.new("pdf"))
   end
 end
 
