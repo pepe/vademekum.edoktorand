@@ -4,6 +4,14 @@ development:
       database: vademekum_development
       hosts:
         - localhost:27017
+
+production:
+  sessions:
+    default:
+      database: vademekum_production
+      hosts:
+        - localhost:27017
+
 test:
   options:
     allow_dynamic_fields: false
