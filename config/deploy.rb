@@ -27,6 +27,8 @@ end
 task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/shared/log"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
+  queue! %[mkdir -p "#{deploy_to}/shared/public/sheets"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/public/sheets"]
 end
 
 desc "Deploys the current version to the server."
