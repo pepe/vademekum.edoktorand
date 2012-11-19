@@ -1,7 +1,7 @@
 - @documents.each do |docs_column|
   div.span4
     - docs_column.each do |doc|
-      div.well
+      div.well class=doc.type
         div.types
           div.label.type =t doc.type, scope: :type
         h3 = doc.name
