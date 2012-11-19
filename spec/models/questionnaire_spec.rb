@@ -2,23 +2,19 @@ require 'spec_helper'
 
 describe Questionnaire do
   context "with attributes" do
-    subject { Questionnaire.create(name: 'Basic',
-                              desc: 'Some basic document',
-                              body:
-      "??? Do you have head?\n\nxxx\nyes\n\n??? How big?\n\n___ Here goes head size\n\n??? Color?\n\nooo\nred\nsimply red",
-                              type: 'expectations') }
+    subject { FactoryGirl.create(:questionnaire) }
 
-    its(:name) { should eq('Basic') }
-    its(:desc) { should eq('Some basic document') }
+    its(:name) { should eq('Basic questionnaire') }
+
+    its(:desc) { should eq('Some basic questionnaire') }
+
     its(:questions) { should have(3).items }
-    its(:type) { should eq('expectations') }
+
+    its(:type) { should eq('records') }
 
     context "with questions" do
-      let(:questionnaire) { Questionnaire.create(name: 'Basic',
-                            desc: 'Some basic document',
-                            body:
-      "??? Do you have head?\n\nxxx\nyes\n\n??? How big?\n\n___ Here goes head size\n\n??? Color?\n\nooo\nred\nsimply red",
-                              type: 'expectations') }
+      let(:questionnaire) { FactoryGirl.create(:questionnaire) }
+
       it "returs question as text, type and options for check question" do
         subject.questions.first.should == ['Do you have head?', 'check', ['yes']]
       end
@@ -33,16 +29,23 @@ describe Questionnaire do
     end
 
     context "when sanitizing input" do
-    let(:questionnaire) { Questionnaire.create(name: 'Basic',
-                              desc: 'Some basic document',
-                              body:
-      "??? Do you have head?\r\n\r\nxxx\r\nyes\r\n\r\n??? How big?\r\n\r\n___ Here goes head size\r\n\r\n??? Color?\r\n\r\nooo\r\nred\nsimply red",
-                              type: 'expectations') }
+      let(:questionnaire) { FactoryGirl.create(:questionnaire,
+                                body:
+        "??? Do you have head?\r\n\r\nxxx\r\nyes\r\n\r\n??? How big?\r\n\r\n___ Here goes head size\r\n\r\n??? Color?\r\n\r\nooo\r\nred\nsimply red",
+                                ) }
       it "it converts \\r\\n to \\n" do
         questionnaire.save
         questionnaire.body.should eql(
           "??? Do you have head?\n\nxxx\nyes\n\n??? How big?\n\n___ Here goes head size\n\n??? Color?\n\nooo\nred\nsimply red",
         )
+      end
+    end
+
+    context "with sections" do
+      let(:questionnaire) { FactoryGirl.create(:questionnaire_with_sections) }
+
+      it "have section as first question" do
+        questionnaire.questions.first.should == ["This section is about heads", "section", nil]
       end
     end
   end

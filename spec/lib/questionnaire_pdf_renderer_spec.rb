@@ -13,7 +13,7 @@ describe Renderer::Questionnaire::PDF do
 
   context "when initilized with params and questions" do
     let(:pdf) { Renderer::Questionnaire::PDF.new("Head sheet",
-                                                 {"do-you-have-head"=>"yes", "which-color"=>"red" },
+                                                 {"which-color"=>"red" },
                                                  [["Do you have head?", "check", "yes"], ["Which color?", "write", "Simply red"]]) }
 
     it "shows initialized title" do
@@ -21,7 +21,7 @@ describe Renderer::Questionnaire::PDF do
     end
 
     it "shows initialized params" do
-      pdf.params.should  eq({"do-you-have-head"=>"yes", "which-color"=>"red" })
+      pdf.params.should  eq({"which-color"=>"red" })
     end
 
     it "shows initialized questions" do
@@ -29,7 +29,7 @@ describe Renderer::Questionnaire::PDF do
     end
 
     it "returns questions with answers" do
-      pdf.questions_with_answers.should == [["Do you have head?", "yes"], ["Which color?", "red"]]
+      pdf.questions_with_answers.should == [["Do you have head?", nil], ["Which color?", "red"]]
     end
   end
 

@@ -25,3 +25,4 @@ cs:
     body: Tělo
     type: Typ
   save: Uložit
+  not_answered: Nezodpovězeno

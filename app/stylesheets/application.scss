@@ -25,26 +25,38 @@ form#questionnaire {
     border: none;
     padding-left: 20ex;
   }
+
   p.question {
     width: 80%;
     font-weight: bolder;
     font-size: larger;
   }
+
   .answer, .question {
     float: left;
   }
+
   hr.clear {
     clear: both;
   }
+
   label, input {
     display: inline;
   }
+
   textarea {
     width: 60%;
     height: 10em;
   }
+
   div.actions {
     text-align: right;
+  }
+
+  h4 {
+    font-size: 24px;
+    line-height: 1.2em;
+    margin: 0;
   }
 }
 

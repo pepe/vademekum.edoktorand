@@ -19,5 +19,9 @@ describe Renderer::Questionnaire do
     question(['Color?', 'choose', ['red', 'simply red']]).should ==
       "<p class='question'>Color?</p><div class='answer'><label><input type='radio' name='color' value='red'/>&nbsp;red</label></div><div class='answer'><label><input type='radio' name='color' value='simply red'/>&nbsp;simply red</label></div>"
   end
+
+  it "renders section header" do
+    question(["This section is about heads", "section", nil]).should eq "<h4>This section is about heads</h4>"
+  end
 end
 

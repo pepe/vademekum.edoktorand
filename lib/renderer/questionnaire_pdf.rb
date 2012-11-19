@@ -38,9 +38,12 @@ module Renderer
         pdf.font 'Calibri'
         pdf.text title, size: 24
         questions_with_answers.each do |pair|
-          next unless pair.last
           pdf.text pair.first, style: :bold
-          pdf.text pair.last
+          if pair.last
+            pdf.text pair.last
+          else
+            pdf.text I18n::t(:not_answered)
+          end
           pdf.move_down 16
         end
         logo_img = File.join(File.dirname(__FILE__), 'images', "logo.jpg")

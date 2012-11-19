@@ -3,18 +3,24 @@ class Questionnaire < Document
 
   def questions
     body.split("???").select(&:present?).map do |question|
-      fields = question.split("\n\n")
-      text = fields[0].strip
-      case fields[1][0..2]
-      when 'xxx'
-        type = 'check'
-        options = fields[1].split("\n")[1..-1]
-      when 'ooo'
-        type = 'choose'
-        options = fields[1].split("\n")[1..-1]
-      when '___'
-        type = 'write'
-        options = fields[1][4..-1]
+      if question.start_with?("###")
+        text = question.split("###").last.strip
+        type = "section"
+        options = nil
+      else
+        fields = question.split("\n\n")
+        text = fields[0].strip
+        case fields[1][0..2]
+        when 'xxx'
+          type = 'check'
+          options = fields[1].split("\n")[1..-1]
+        when 'ooo'
+          type = 'choose'
+          options = fields[1].split("\n")[1..-1]
+        when '___'
+          type = 'write'
+          options = fields[1][4..-1]
+        end
       end
       [text, type, options]
     end

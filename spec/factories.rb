@@ -21,6 +21,30 @@ simply red
 BODY
   end
 
+  factory :questionnaire_with_sections, class: Questionnaire do
+    name 'Questionnaire with sections'
+    desc 'Some questionnaire with sections'
+    type 'records'
+    body <<BODY
+### This section is about heads
+
+??? Do you have head?
+
+xxx
+yes
+
+??? How big?
+
+___ Here goes head size
+
+??? Color?
+
+ooo
+red
+simply red
+BODY
+  end
+
   factory :document do
     name 'Basic document'
     desc 'Some basic document'
