@@ -46,8 +46,6 @@ module Renderer
           end
           pdf.move_down 16
         end
-        logo_img = File.join(File.dirname(__FILE__), 'images', "logo.jpg")
-        pdf.image logo_img, :at => [450, 740], :width => 100
         pdf.render
       end
     end
