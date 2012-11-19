@@ -21,9 +21,12 @@ task :environment do
  # invoke :'rvm:use[ruby-1.9.3-p327@vademekum]'
 end
 
+
 # Put any custom mkdir's in here for when `mina setup` is ran.
 # For Rails apps, we'll make some of the shared paths that are shared between
 # all releases.
+set :shared_paths, ['public/sheets']
+
 task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/shared/log"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
