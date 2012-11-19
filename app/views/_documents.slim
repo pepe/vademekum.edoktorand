@@ -7,7 +7,7 @@
         h3 = doc.name
         p.desc = doc.desc
         p.metadata
-          small #{t :created_at}: #{l(doc.created_at, format: :short)}
+          small == date_action(current_account, doc)
           a.btn.btn-primary href=url(*action_url(doc)) =t action(doc)
           - if current_account.admin?
             span.divider &nbsp;

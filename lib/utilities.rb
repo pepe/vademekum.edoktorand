@@ -29,5 +29,19 @@ module Utilities
   def action(doc)
     doc.is_a?(Questionnaire) ? :fill : :view
   end
+
+  def date_action(account, doc)
+    if doc.is_a?(Questionnaire)
+      account.extend Paths
+      if File.exists?(file = account.sheet_path(doc.id))
+        time = File.ctime(file)
+        "<a href='/sheets/#{account.id}/#{doc.id}.pdf'>#{I18n::t :last_filled}: #{I18n::l(time, format: :short)}</a>"
+      else
+        I18n::t(:never_filled)
+      end
+    else
+      "#{I18n::t :created_at}: #{I18n::l(doc.created_at, format: :short)}"
+    end
+  end
 end
 

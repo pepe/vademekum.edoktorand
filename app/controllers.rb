@@ -47,14 +47,17 @@ Vademekum.controllers  do
   end
 
   post :sheet, with: :id do
-    flash[:notification] = t(:submited_successfully)
     questionnaire = Questionnaire.find(params[:id])
+    account = current_account
 
     path = Renderer::Questionnaire::PDF.new(questionnaire.name,
                                            params,
                                            questionnaire.questions).prepare_file
+    account.extend Paths
+    account.save_sheet(questionnaire.id, path)
+
     content_type "application/pdf"
-    send_file path
+    send_file path, filename: questionnaire.name.parameterize + ".pdf"
   end
 
   get :not_logged do

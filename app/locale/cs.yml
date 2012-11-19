@@ -4,8 +4,10 @@ cs:
   fill: Vyplnit
   edit: Upravit
   submit: Odeslat
-  submited_successfully: Odesláno úspěšně
+  create_pdf: Vytvořit PDF
   created_at: Vytvořen
+  never_filled: Nikdy nevyplněn
+  last_filled: Vyplněno
   back: Zpět na Vaši zeď
   editing: Editace
   not_logged_in: Nejste přihlášen/-a. Prosím uděljte tak na eDoktorandovi.

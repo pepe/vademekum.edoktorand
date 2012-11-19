@@ -26,7 +26,7 @@ describe Account do
 
     it "authenticate right token" do
       account.should be_authenticated("4a6f77a6de3d7b16e0e566fe9a7760fa4a657004")
-    end
+   end
   end
 end
 

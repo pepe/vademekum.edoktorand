@@ -4,8 +4,11 @@ en:
   fill: Fill
   edit: Edit
   submit: Submit
+  create_pdf: Create PDF
   submited_successfully: Submited successfully
   created_at: Created at
+  never_filled: Never filled out
+  last_filled: Filled at
   back: Back to your wall
   not_logged_in: You are not logged in. Please do so from eDoktorand.
   editing: Editing

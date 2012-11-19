@@ -26,17 +26,7 @@ feature "Showing questionnaires", type: :request do
     check "yes"
     choose "simply red"
     fill_in "how-big", with: "45"
-    click_on "Submit"
-  end
-
-  scenario "downloading sheet pdf" do
-    visit '/'
-    click_on 'Fill'
-    check "yes"
-    choose "simply red"
-    fill_in "how-big", with: "45"
-    click_on "Submit"
-    page.response_headers["Content-Type"].should match(Regexp.new("pdf"))
+    click_on "Create PDF"
   end
 end
 

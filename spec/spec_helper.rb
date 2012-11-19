@@ -11,6 +11,7 @@ Spork.prefork do
     conf.after do
       Document.delete_all
       Account.delete_all
+      FileUtils.rm_rf("spec/fixtures/sheets")
     end
   end
 

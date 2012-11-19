@@ -6,6 +6,7 @@ describe Utilities do
     double('RackRequest') }
   let(:document) { FactoryGirl.create(:document) }
   let(:questionnaire) { FactoryGirl.create(:questionnaire) }
+  let(:account) { FactoryGirl.create(:account) }
 
   before do
     extend Utilities
@@ -17,27 +18,44 @@ describe Utilities do
   end
 
   it "returns menu items" do
-    menu_items.keys.should == ['/', '/records', '/expectations', '/analysis', '/plan']
+    menu_items.keys.should eq ['/', '/records', '/expectations', '/analysis', '/plan']
   end
 
   it "returns columnized array" do
-    columnize([1, 2, 3, 4, 5, 6, 7]).to_a.should == [[1, 2, 3], [4, 5, 6], [7]]
+    columnize([1, 2, 3, 4, 5, 6, 7]).to_a.should eq [[1, 2, 3], [4, 5, 6], [7]]
   end
 
   it "returns view url parameters for document" do
-    action_url(document).should == [:document, id: document.id]
+    action_url(document).should eq [:document, id: document.id]
   end
 
   it "returns pass url for questionnaire" do
-    action_url(questionnaire).should == [:fill, id: questionnaire.id]
+    action_url(questionnaire).should eq [:fill, id: questionnaire.id]
   end
 
   it "returns view action for document" do
-    action(document).should == :view
+    action(document).should eq :view
   end
 
   it "returns pass action for document" do
-    action(questionnaire).should == :fill
+    action(questionnaire).should eq :fill
+  end
+
+  it "returns create date for document" do
+    date_action(account, document).should match /Created at: \d+ [A-Z][a-z]+ \d+:\d+/
+  end
+
+  it "returns that it was never filled" do
+    account.extend Paths
+    date_action(account, questionnaire).should eq "Never filled out"
+  end
+
+  it "returns last filling when sheet exists" do
+    account.extend Paths
+    account.sheets_path = "spec/fixtures/sheets"
+    account.save_sheet(questionnaire.id, "spec/fixtures/sheet.pdf")
+    date_action(account, questionnaire).should match(
+      /<a href='\/sheets\/#{account.id}\/#{questionnaire.id}.pdf'>Filled at: \d+ [A-Z][a-z]+ \d+:\d+<\/a>/)
   end
 end
 
