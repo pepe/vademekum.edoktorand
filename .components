@@ -2,6 +2,5 @@
 :orm: mongoid
 :test: rspec
 :mock: none
-:script: jquery
 :renderer: slim
 :stylesheet: compass
