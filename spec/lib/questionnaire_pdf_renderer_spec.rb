@@ -44,6 +44,10 @@ describe Renderer::Questionnaire::PDF do
       strings.include?("Head sheet").should be_true
     end
 
+    it "prepares PDF with todays date" do
+      strings.include?(I18n::l(Date.today, format: :long)).should be_true
+    end
+
     it "prepares PDF file with the questions" do
       strings.include?("Do you have head?").should be_true
     end

@@ -17,7 +17,11 @@ module Renderer
       def questions_with_answers
         @questions.map do |question|
           text = question.first
-          [text, params[text.parameterize]]
+          if question[1] != "section"
+            [text, params[text.parameterize]]
+          else
+            [' ', text]
+          end
         end
       end
 
@@ -37,9 +41,10 @@ module Renderer
                              bold: File.join(File.dirname(__FILE__), 'fonts', "Calibri-Bold.ttf") } )
         pdf.font 'Calibri'
         pdf.text title, size: 24
+        pdf.draw_text I18n::l(Date.today, format: :long), at: [450, 720]
         questions_with_answers.each do |pair|
           pdf.text pair.first, style: :bold
-          if pair.last.present?
+          if pair.last && !pair.last.empty?
             pdf.text pair.last
           else
             pdf.text I18n::t(:not_answered)
