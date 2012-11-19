@@ -34,6 +34,7 @@ form#questionnaire {
 
   .answer, .question {
     float: left;
+    clear: left;
   }
 
   hr.clear {

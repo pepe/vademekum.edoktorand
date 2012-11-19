@@ -39,7 +39,7 @@ module Renderer
         pdf.text title, size: 24
         questions_with_answers.each do |pair|
           pdf.text pair.first, style: :bold
-          if pair.last
+          if pair.last.present?
             pdf.text pair.last
           else
             pdf.text I18n::t(:not_answered)
