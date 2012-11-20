@@ -20,7 +20,7 @@ module Renderer
           if question[1] != "section"
             [text, params[text.parameterize]]
           else
-            [' ', text]
+            ['', text]
           end
         end
       end
@@ -43,6 +43,13 @@ module Renderer
         pdf.text title, size: 24
         pdf.draw_text I18n::l(Date.today, format: :long), at: [450, 720]
         questions_with_answers.each do |pair|
+          # section
+          if pair.first.empty?
+            pdf.move_down 16
+            pdf.text pair.last, size: 18
+            next
+          end
+          # answers
           pdf.text pair.first, style: :bold
           if pair.last && !pair.last.empty?
             pdf.text pair.last
