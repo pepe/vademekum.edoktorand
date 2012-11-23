@@ -3,8 +3,8 @@ require 'i18n'
 module Utilities
   I18n.load_path == Dir['app/locale/*.yml']
 
-  def menu_active?(request, item)
-    item == request.env['PATH_INFO'] ? 'active' : ''
+  def menu_active?(item)
+    item == current_type ? 'active' : ''
   end
 
   def menu_items

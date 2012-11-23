@@ -15,6 +15,16 @@ Vademekum.controllers  do
     def current_account
       Account.find(session[:current_account]) if session[:current_account]
     end
+
+    def current_type
+      return @document.type if @document
+      return params[:type] if params[:type]
+      ''
+    end
+
+    def current_type_url
+      "/#{current_type}"
+    end
   end
 
   get :index do

@@ -2,6 +2,9 @@ ul.breadcrumb
   li
     a href="/" =t 'wall'
     span class="divider" &nbsp;&frasl;&nbsp;
+  li
+    a href=current_type_url =t current_type, scope: :type
+    span class="divider" &nbsp;&frasl;&nbsp;
   li.active = @document.name
 
 div.document

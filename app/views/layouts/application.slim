@@ -13,7 +13,7 @@ html
             = current_account.name
           ul.nav
             - menu_items.each do |item|
-              li class=menu_active?(request, item.first)
+              li class=menu_active?(item.first)
                 a href=item.first = item.last
 
     div.container

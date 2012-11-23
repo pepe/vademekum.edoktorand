@@ -7,14 +7,18 @@ describe Utilities do
   let(:document) { FactoryGirl.create(:document) }
   let(:questionnaire) { FactoryGirl.create(:questionnaire) }
   let(:account) { FactoryGirl.create(:account) }
+  let(:current_type) { "active" }
 
   before do
     extend Utilities
   end
 
-  it "converts markdown to html" do
-    request.stub(:env) { { 'PATH_INFO' => 'active' } }
-    menu_active?(request, 'nonactive').should == ''
+  it "returns no class if menu is nonactive" do
+    menu_active?('nonactive').should == ''
+  end
+
+  it "returns active class if menu is active" do
+    menu_active?('active').should == 'active'
   end
 
   it "returns menu items" do
