@@ -57,5 +57,13 @@ describe Utilities do
     date_action(account, questionnaire).should match(
       /<a href='\/sheets\/#{account.id}\/#{questionnaire.id}.pdf'>Filled at: \d+ [A-Z][a-z]+ \d+:\d+<\/a>/)
   end
+
+  it "returns primary button class for questionnaire" do
+    action_class(questionnaire).should eq 'btn btn-primary'
+  end
+
+  it "returns button class for document" do
+    action_class(document).should eq 'btn'
+  end
 end
 

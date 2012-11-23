@@ -6,10 +6,11 @@ feature "Administer documents" do
     FactoryGirl.create(:document)
     FactoryGirl.create(:admin)
     spec_auth("admin")
+    visit '/'
+    click_on "Records"
   end
 
   scenario "getting to edit the document" do
-    visit '/'
     click_on 'Edit'
     find('li.active').text.should == 'Editing: Basic document'
     page.should have_css('input#name')
@@ -19,7 +20,6 @@ feature "Administer documents" do
   end
 
   scenario "editing the document" do
-    visit '/'
     click_on 'Edit'
     fill_in 'name', with: 'Advanced'
     click_on 'Save'

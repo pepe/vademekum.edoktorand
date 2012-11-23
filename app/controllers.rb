@@ -19,7 +19,7 @@ Vademekum.controllers  do
 
   get :index do
     extend Renderer::Html
-    @documents = columnize(Document.for_front_page)
+    @documents = columnize(Questionnaire.for_front_page)
     render 'index'
   end
 
@@ -35,9 +35,9 @@ Vademekum.controllers  do
   end
 
   post :update do
-    @document = Document.find(params[:id])
-    @document.update_attributes(params[:document])
-    redirect url(:index)
+    document = Document.find(params[:id])
+    document.update_attributes(params[:document])
+    redirect url(:type, type: document.type)
   end
 
   get :fill, with: :id do

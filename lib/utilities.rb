@@ -26,6 +26,10 @@ module Utilities
     [doc.is_a?(Questionnaire) ? :fill : :document, id: doc.id]
   end
 
+  def action_class(doc)
+    'btn' + (doc.is_a?(Questionnaire) ? ' btn-primary' : '')
+  end
+
   def action(doc)
     doc.is_a?(Questionnaire) ? :fill : :view
   end

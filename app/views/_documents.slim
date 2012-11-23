@@ -8,7 +8,7 @@
         p.desc = doc.desc
         p.metadata
           small == date_action(current_account, doc)
-          a.btn.btn-primary href=url(*action_url(doc)) =t action(doc)
+          a class=action_class(doc) href=url(*action_url(doc)) =t action(doc)
           - if current_account.admin?
             span.divider &nbsp;
             a.btn.btn-primary href=url(:edit, id: doc.id) =t :edit
