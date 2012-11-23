@@ -4,11 +4,10 @@ ul.breadcrumb
     span class="divider" &nbsp;&frasl;&nbsp;
   li.active
     == "#{t 'editing'}: #{@document.name}"
+
 div.span12
   form.form-horizontal method='post' action=url(:update, id: @document.id)
     fieldset
-      div.control-group.pull-right
-        input.btn.btn-primary type='submit' value=t('save')
       div.control-group
         label.control-label for="name" =t 'document.name'
         div.controls

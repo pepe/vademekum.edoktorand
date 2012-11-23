@@ -17,9 +17,11 @@ gem "prawn"
 
 # Test requirements
 group :test do
-  gem 'rspec'
+  gem 'rspec', '~> 2.12.0'
   gem 'rack-test', require: "rack/test"
-  gem 'capybara'
+  gem 'capybara', '~> 2.0.0'
+  gem 'nokogiri'
+  gem 'xpath'
   gem 'spork', '~> 0.9.0'
   gem 'factory_girl'
   gem 'pdf-inspector', require: 'pdf/inspector'
