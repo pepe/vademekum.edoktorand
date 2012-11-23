@@ -26,4 +26,11 @@ feature "Administer documents" do
     page.should have_content 'Advanced'
   end
 
+  scenario "creating document" do
+    click_on 'New document'
+    page.should have_content('Creating new document')
+    fill_in 'name', with: 'Advanced'
+    click_on 'Save'
+    page.should have_content 'Advanced'
+  end
 end

@@ -7,26 +7,5 @@ ul.breadcrumb
 
 div.span12
   form.form-horizontal method='post' action=url(:update, id: @document.id)
-    fieldset
-      div.control-group
-        label.control-label for="name" =t 'document.name'
-        div.controls
-          input#name.input-xlarge name='document[name]' type='text' value=@document.name
-      div.control-group
-        label.control-label for="desc" =t 'document.desc'
-        div.controls
-          input#desc.input-xlarge name='document[desc]' type='text' value=@document.desc
-      div.control-group
-        label.control-label for="desc" =t 'document.body'
-        div.controls
-          textarea#body name='document[body]' rows='30' = @document.body
-      div.control-group.pull-right
-        input.btn.btn-primary type='submit' value=t('save')
-      div.control-group
-        label.control-label for="type" =t 'document.type'
-        div.controls
-          select#type name='document[type]' selected=@document.type
-            - %w(expectations plan records analysis).each do |type|
-              option value=type selected=@document.is_type?(type) =t type, scope: :type
-          |&nbsp;
+    == partial "form"
 

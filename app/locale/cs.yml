@@ -3,6 +3,7 @@ cs:
   view: Zobrazit
   fill: Vyplnit
   edit: Upravit
+  new_document: Nový dokument
   submit: Odeslat
   create_pdf: Vytvořit PDF
   created_at: Vytvořen
@@ -10,6 +11,7 @@ cs:
   last_filled: Vyplněno
   back: Zpět na Vaši zeď
   editing: Editace
+  creating: Vytváření nového dokumentu
   not_logged_in: Nejste přihlášen/-a. Prosím uděljte tak na eDoktorandovi.
   type:
     wall: Zeď

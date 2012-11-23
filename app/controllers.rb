@@ -23,30 +23,51 @@ Vademekum.controllers  do
     end
 
     def current_type_url
-      "/#{current_type}"
+      url(:type, type: current_type)
+    end
+
+    def new_current_type_url
+      url(:new, type: current_type)
     end
   end
 
   get :index do
     extend Renderer::Html
     @documents = columnize(Questionnaire.for_front_page)
+
     render 'index'
   end
 
   get :document, with: :id do
     extend Renderer::Html
     @document = Document.find(params[:id])
+
     render 'document'
   end
 
   get :edit, with: :id do
     @document = Document.find(params[:id])
+
     render 'edit'
   end
 
   post :update do
     document = Document.find(params[:id])
     document.update_attributes(params[:document])
+
+    redirect url(:type, type: document.type)
+  end
+
+  get :new, with: :type do
+    extend Renderer::Html
+    @document = Document.new(type: :type)
+
+    render 'new'
+  end
+
+  post :create do
+    document = Document.create(params[:document])
+
     redirect url(:type, type: document.type)
   end
 
