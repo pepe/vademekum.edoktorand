@@ -1,0 +1,12 @@
+ul.breadcrumb
+  li
+    a href="/" =t 'wall'
+    span class="divider" &nbsp;&frasl;&nbsp;
+  li.active
+    =t :creating
+
+div.span12
+  form.form-horizontal method='post' action=url(:create)
+    == partial "form"
+
+
