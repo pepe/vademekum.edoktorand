@@ -29,6 +29,7 @@ feature "Administer documents" do
   scenario "creating document" do
     click_on 'New document'
     page.should have_content('Creating new document')
+    page.should have_css("select#type[selected='records']")
     fill_in 'name', with: 'Advanced'
     click_on 'Save'
     page.should have_content 'Advanced'

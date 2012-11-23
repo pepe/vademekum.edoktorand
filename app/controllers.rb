@@ -60,7 +60,7 @@ Vademekum.controllers  do
 
   get :new, with: :type do
     extend Renderer::Html
-    @document = Document.new(type: :type)
+    @document = Document.new(type: params[:type])
 
     render 'new'
   end
