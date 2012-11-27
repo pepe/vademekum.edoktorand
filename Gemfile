@@ -1,4 +1,4 @@
-source :rubygems
+source "http://bundler-api.herokuapp.com"
 
 # Server requirements
 gem 'thin' # or mongrel
