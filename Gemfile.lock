@@ -41,7 +41,7 @@ GIT
       padrino-core (= 0.10.6)
 
 GEM
-  remote: http://rubygems.org/
+  remote: http://bundler-api.herokuapp.com/
   specs:
     Ascii85 (1.0.2)
     activemodel (3.2.3)
