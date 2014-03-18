@@ -12,7 +12,9 @@ module Utilities
       '/records' => I18n::t(:records, scope: :type),
       '/expectations' => I18n::t(:expectations, scope: :type),
       '/analysis' => I18n::t(:analysis, scope: :type),
-      '/plan' => I18n::t(:plan, scope: :type) }
+      '/plan' => I18n::t(:plan, scope: :type),
+      '/evaluation' => I18n::t(:evaluation, scope: :type)
+    }
   end
 
   def columnize(arr, cols = 3)

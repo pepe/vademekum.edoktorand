@@ -22,7 +22,7 @@ describe Utilities do
   end
 
   it "returns menu items" do
-    menu_items.keys.should eq ['/', '/records', '/expectations', '/analysis', '/plan']
+    menu_items.keys.should eq ['/', '/records', '/expectations', '/analysis', '/plan', '/evaluation']
   end
 
   it "returns columnized array" do

@@ -17,7 +17,7 @@ fieldset
     label.control-label for="type" =t 'document.type'
     div.controls
       select#type name='document[type]' selected=@document.type
-        - %w(expectations plan records analysis).each do |type|
+        - %w(expectations plan records analysis evaluation).each do |type|
           option value=type selected=@document.is_type?(type) =t type, scope: :type
       |&nbsp;
 
