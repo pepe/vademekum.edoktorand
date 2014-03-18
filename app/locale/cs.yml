@@ -6,13 +6,14 @@ cs:
   new_document: Nový dokument
   submit: Odeslat
   create_pdf: Vytvořit PDF
+  submited_successfully: Odesláno úspěšně
   created_at: Vytvořen
   never_filled: Nikdy nevyplněn
   last_filled: Vyplněno
   back: Zpět na Vaši zeď
+  not_logged_in: Nejste přihlášen/-a. Prosím uděljte tak na eDoktorandovi.
   editing: Editace
   creating: Vytváření nového dokumentu
-  not_logged_in: Nejste přihlášen/-a. Prosím uděljte tak na eDoktorandovi.
   type:
     wall: Zeď
     records: Záznamy
@@ -22,6 +23,7 @@ cs:
     evaluation: Evaluace
   documents: Dokumenty
   badges: Odznaky
+  name: Jméno
   document:
     name: Jméno
     desc: Popis
@@ -29,3 +31,4 @@ cs:
     type: Typ
   save: Uložit
   not_answered: Nezodpovězeno
+  tutor: Školitel

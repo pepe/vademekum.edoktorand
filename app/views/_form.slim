@@ -18,6 +18,6 @@ fieldset
     div.controls
       select#type name='document[type]' selected=@document.type
         - %w(expectations plan records analysis evaluation).each do |type|
-          option value=type selected=@document.is_type?(type) =t type, scope: :type
+          option value=type selected=@document.typed?(type) =t type, scope: :type
       |&nbsp;
 

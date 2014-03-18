@@ -11,6 +11,9 @@ html
           span.brand
             | Vademekum&nbsp;-&nbsp;
             = current_account.name
+            - if current_account.role
+              |&nbsp;-&nbsp;
+              em =t current_account.role
           ul.nav
             - menu_items.each do |item|
               li class=menu_active?(item.first)

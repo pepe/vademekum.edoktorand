@@ -34,7 +34,7 @@ Vademekum.controllers  do
 
   get :index do
     extend Renderer::Html
-    @documents = columnize(Questionnaire.for_front_page)
+    @documents = columnize(Questionnaire.for_front_page(current_account.role))
 
     render 'index'
   end

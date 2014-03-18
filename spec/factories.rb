@@ -49,7 +49,7 @@ BODY
     name 'Basic document'
     desc 'Some basic document'
     body '# Some basic document'
-    type 'records'
+    sequence(:type) { |n| n%2 == 0 ? 'records' : 'expectations' }
   end
 
   factory :account do

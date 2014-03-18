@@ -7,10 +7,10 @@ feature "Administer documents" do
     FactoryGirl.create(:admin)
     spec_auth("admin")
     visit '/'
-    click_on "Records"
   end
 
   scenario "getting to edit the document" do
+    click_on "Expectations"
     click_on 'Edit'
     expect(find('li.active').text).to eq('Editing: Basic document')
     expect(page).to have_css('input#name')
@@ -20,6 +20,7 @@ feature "Administer documents" do
   end
 
   scenario "editing the document" do
+    click_on "Records"
     click_on 'Edit'
     fill_in 'name', with: 'Advanced'
     click_on 'Save'
@@ -27,9 +28,10 @@ feature "Administer documents" do
   end
 
   scenario "creating document" do
+    click_on "Expectations"
     click_on 'New document'
     expect(page).to have_content('Creating new document')
-    expect(page).to have_css("select#type[selected='records']")
+    expect(page).to have_css("select#type[selected='expectations']")
     fill_in 'name', with: 'Advanced'
     click_on 'Save'
     expect(page).to have_content 'Advanced'

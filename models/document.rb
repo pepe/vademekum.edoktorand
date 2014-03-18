@@ -8,14 +8,25 @@ class Document
   field :desc, type: String
   field :body, type: String
   field :type, type: String
+  field :owner, type: String
 
   scope :all_with_type, ->(type){ where(type: type) }
 
-  def self.for_front_page
-    self.all
+  def self.for_front_page(owner = nil)
+    if owner == 'admin'
+      self.all
+    elsif owner
+      self.or({ owner: owner }, { owner: nil })
+    else
+      self.where(owner: nil)
+    end
   end
 
-  def is_type?(type)
+  def typed?(type)
     self.type == type
+  end
+
+  def owned_by?(owner)
+    self.owner == owner
   end
 end
