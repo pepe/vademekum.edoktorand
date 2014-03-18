@@ -24,6 +24,7 @@ group :test do
   gem 'xpath'
   gem 'factory_girl'
   gem 'pdf-inspector', require: 'pdf/inspector'
+  gem 'pry'
 end
 
 
