@@ -3,7 +3,7 @@ require 'mina/git'
 require 'mina/rvm'
 
 set :domain, 'edoktorand.czu.cz'
-set :deploy_to, '/home/deploy/vademekum.edoktorand.czu.cz'
+set :deploy_to, '/usr/home/deploy/vademekum.edoktorand.czu.cz'
 set :repository, 'git://github.com/pepe/vademekum.edoktorand'
 set :branch, 'master'
 
