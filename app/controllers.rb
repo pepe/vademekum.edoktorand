@@ -2,6 +2,7 @@
 Vademekum.controllers  do
   before do
     extend Utilities
+
     if params[:locale]
       I18n.locale = params[:locale]
     end

@@ -1,13 +1,12 @@
 #encoding utf-8
 require "spec_helper"
 
+class Sample
+  include Paths
+  attr_accessor :id
+end
+
 describe Paths do
-  before :all do
-    class Sample
-      include Paths
-      attr_accessor :id
-    end
-  end
 
   let(:sample) { Sample.new }
 
@@ -21,7 +20,7 @@ describe Paths do
   end
 
   context "with id set" do
-    before :all do
+    before do
       sample.sheets_path = "spec/fixtures/sheets"
       sample.id = "012345689abcdef"
     end
