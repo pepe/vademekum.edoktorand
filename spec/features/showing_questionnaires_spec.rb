@@ -10,15 +10,15 @@ feature "Showing questionnaires", type: :request do
 
   scenario "showing questionnaire on home page" do
     visit '/'
-    page.should have_content('Questionnaire with sections')
+    expect(page).to have_content('Questionnaire with sections')
   end
 
   scenario "showing questionnaire form" do
     visit '/'
     click_on 'Fill'
-    page.should have_css('#questionnaire')
-    page.should have_css('h4', text: "This section is about heads")
-    find('div.hero-unit').text.should == 'Some questionnaire with sections'
+    expect(page).to have_css('#questionnaire')
+    expect(page).to have_css('h4', text: "This section is about heads")
+    expect(find('div.hero-unit').text).to eq('Some questionnaire with sections')
   end
 
   scenario "submitting sheet" do

@@ -14,60 +14,60 @@ describe Utilities do
   end
 
   it "returns no class if menu is nonactive" do
-    menu_active?('nonactive').should == ''
+    expect(menu_active?('nonactive')).to eq('')
   end
 
   it "returns active class if menu is active" do
-    menu_active?('active').should == 'active'
+    expect(menu_active?('active')).to eq('active')
   end
 
   it "returns menu items" do
-    menu_items.keys.should eq ['/', '/records', '/expectations', '/analysis', '/plan', '/evaluation']
+    expect(menu_items.keys).to eq ['/', '/records', '/expectations', '/analysis', '/plan', '/evaluation']
   end
 
   it "returns columnized array" do
-    columnize([1, 2, 3, 4, 5, 6, 7]).to_a.should eq [[1, 2, 3], [4, 5, 6], [7]]
+    expect(columnize([1, 2, 3, 4, 5, 6, 7]).to_a).to eq [[1, 2, 3], [4, 5, 6], [7]]
   end
 
   it "returns view url parameters for document" do
-    action_url(document).should eq [:document, id: document.id]
+    expect(action_url(document)).to eq [:document, id: document.id]
   end
 
   it "returns pass url for questionnaire" do
-    action_url(questionnaire).should eq [:fill, id: questionnaire.id]
+    expect(action_url(questionnaire)).to eq [:fill, id: questionnaire.id]
   end
 
   it "returns view action for document" do
-    action(document).should eq :view
+    expect(action(document)).to eq :view
   end
 
   it "returns pass action for document" do
-    action(questionnaire).should eq :fill
+    expect(action(questionnaire)).to eq :fill
   end
 
   it "returns create date for document" do
-    date_action(account, document).should match /Created at: \d+ [A-Z][a-z]+ \d+:\d+/
+    expect(date_action(account, document)).to match /Created at: \d+ [A-Z][a-z]+ \d+:\d+/
   end
 
   it "returns that it was never filled" do
     account.extend Paths
-    date_action(account, questionnaire).should eq "Never filled out"
+    expect(date_action(account, questionnaire)).to eq "Never filled out"
   end
 
   it "returns last filling when sheet exists" do
     account.extend Paths
     account.sheets_path = "spec/fixtures/sheets"
     account.save_sheet(questionnaire.id, "spec/fixtures/sheet.pdf")
-    date_action(account, questionnaire).should match(
+    expect(date_action(account, questionnaire)).to match(
       /<a href='\/sheets\/#{account.id}\/#{questionnaire.id}.pdf'>Filled at: \d+ [A-Z][a-z]+ \d+:\d+<\/a>/)
   end
 
   it "returns primary button class for questionnaire" do
-    action_class(questionnaire).should eq 'btn btn-primary'
+    expect(action_class(questionnaire)).to eq 'btn btn-primary'
   end
 
   it "returns button class for document" do
-    action_class(document).should eq 'btn'
+    expect(action_class(document)).to eq 'btn'
   end
 end
 

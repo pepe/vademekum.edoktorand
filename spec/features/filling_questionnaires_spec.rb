@@ -15,13 +15,13 @@ feature "Filling questionnaires", type: :request do
   end
 
   scenario "downloading sheet pdf" do
-    page.response_headers["Content-Type"].should match(Regexp.new("pdf"))
+    expect(page.response_headers["Content-Type"]).to match(Regexp.new("pdf"))
   end
 
   scenario "downloading sheet next time" do
     visit "/"
-    page.should have_content('Filled at:')
+    expect(page).to have_content('Filled at:')
     page.find("p.metadata small a").click
-    page.response_headers["Content-Type"].should match(Regexp.new("pdf"))
+    expect(page.response_headers["Content-Type"]).to match(Regexp.new("pdf"))
   end
 end

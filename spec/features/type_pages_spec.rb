@@ -12,19 +12,19 @@ feature "Type pages", type: :request do
   scenario "showing records documents" do
     visit '/'
     click_on 'Records'
-    page.should have_content('Some basic document')
+    expect(page).to have_content('Some basic document')
   end
 
   scenario "showing expectations documents" do
     visit '/'
     click_on 'Expectations'
-    page.should have_content('Some expectations document')
+    expect(page).to have_content('Some expectations document')
   end
 
   scenario "not crashing when no documents of the type" do
     visit '/'
     click_on 'Analysis'
-    page.should_not have_content('Error')
+    expect(page).not_to have_content('Error')
   end
 end
 

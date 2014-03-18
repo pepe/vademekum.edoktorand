@@ -8,12 +8,12 @@ feature "Login", type: :request do
 
   scenario "showing not logged page" do
     visit "/"
-    page.should have_content('You are not logged in. Please do so from eDoktorand.')
+    expect(page).to have_content('You are not logged in. Please do so from eDoktorand.')
   end
 
   scenario "loggind in" do
     visit "/authenticate/koska/4a6f77a6de3d7b16e0e566fe9a7760fa4a657004"
-    page.should have_content 'Your wall'
+    expect(page).to have_content 'Your wall'
   end
 end
 

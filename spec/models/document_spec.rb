@@ -7,10 +7,25 @@ describe Document do
                               body: '# Some basic document',
                               type: 'expectations') }
 
-    its(:name) { should eq('Basic') }
-    its(:desc) { should eq('Some basic document') }
-    its(:body) { should eq('# Some basic document') }
-    its(:type) { should eq('expectations') }
+    describe '#name' do
+      subject { super().name }
+      it { is_expected.to eq('Basic') }
+    end
+
+    describe '#desc' do
+      subject { super().desc }
+      it { is_expected.to eq('Some basic document') }
+    end
+
+    describe '#body' do
+      subject { super().body }
+      it { is_expected.to eq('# Some basic document') }
+    end
+
+    describe '#type' do
+      subject { super().type }
+      it { is_expected.to eq('expectations') }
+    end
   end
 
   context "when searching" do
@@ -24,13 +39,13 @@ describe Document do
 
     context "for front page" do
       it "returns documents in columns" do
-        Document.for_front_page.size.should == 5
+        expect(Document.for_front_page.size).to eq(5)
       end
     end
 
     context "for type pages" do
       it "all documents" do
-        Document.all_with_type('records').size.should == 3
+        expect(Document.all_with_type('records').size).to eq(3)
       end
     end
   end

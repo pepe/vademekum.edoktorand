@@ -5,15 +5,15 @@ describe Questionnaire do
     let(:questionnaire) { FactoryGirl.create(:questionnaire) }
 
     it "returs question as text, type and options for check question" do
-      subject.questions.first.should == ['Do you have head?', 'check', ['yes']]
+      expect(questionnaire.questions.first).to eq(['Do you have head?', 'check', ['yes']])
     end
 
     it "returs question as text, type and placeholder for write question" do
-      subject.questions[1].should == ['How big?', 'write', 'Here goes head size']
+      expect(questionnaire.questions[1]).to eq(['How big?', 'write', 'Here goes head size'])
     end
 
     it "returs question as text, type and options for choose question" do
-      subject.questions.last.should == ['Color?', 'choose', ['red', 'simply red']]
+      expect(questionnaire.questions.last).to eq(['Color?', 'choose', ['red', 'simply red']])
     end
   end
 
@@ -24,7 +24,7 @@ describe Questionnaire do
                               ) }
     it "it converts \\r\\n to \\n" do
       questionnaire.save
-      questionnaire.body.should eql(
+      expect(questionnaire.body).to eql(
         "??? Do you have head?\n\nxxx\nyes\n\n??? How big?\n\n___ Here goes head size\n\n??? Color?\n\nooo\nred\nsimply red",
       )
     end
@@ -34,7 +34,7 @@ describe Questionnaire do
     let(:questionnaire) { FactoryGirl.create(:questionnaire_with_sections) }
 
     it "have section as first question" do
-      questionnaire.questions.first.should == ["This section is about heads", "section", nil]
+      expect(questionnaire.questions.first).to eq(["This section is about heads", "section", nil])
     end
   end
 end

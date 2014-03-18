@@ -3,13 +3,22 @@ require 'renderer/questionnaire_pdf'
 require 'pdf/inspector'
 
 describe Renderer::Questionnaire::PDF do
-  it { should be }
+  it { is_expected.to be }
 
-  its(:params) { should eq({}) }
+  describe '#params' do
+    subject { super().params }
+    it { is_expected.to eq({}) }
+  end
 
-  its(:questions) { should eq([]) }
+  describe '#questions' do
+    subject { super().questions }
+    it { is_expected.to eq([]) }
+  end
 
-  its(:title) { should eq("") }
+  describe '#title' do
+    subject { super().title }
+    it { is_expected.to eq("") }
+  end
 
   context "when initilized with params and questions" do
     let(:pdf) { Renderer::Questionnaire::PDF.new("Head sheet",
@@ -17,19 +26,19 @@ describe Renderer::Questionnaire::PDF do
                                                  [["Do you have head?", "check", "yes"], ["Which color?", "write", "Simply red"]]) }
 
     it "shows initialized title" do
-      pdf.title.should eq("Head sheet")
+      expect(pdf.title).to eq("Head sheet")
     end
 
     it "shows initialized params" do
-      pdf.params.should  eq({"which-color"=>"red" })
+      expect(pdf.params).to  eq({"which-color"=>"red" })
     end
 
     it "shows initialized questions" do
-      pdf.questions.should eq([["Do you have head?", "check", "yes"], ["Which color?", "write", "Simply red"]])
+      expect(pdf.questions).to eq([["Do you have head?", "check", "yes"], ["Which color?", "write", "Simply red"]])
     end
 
     it "returns questions with answers" do
-      pdf.questions_with_answers.should == [["Do you have head?", nil], ["Which color?", "red"]]
+      expect(pdf.questions_with_answers).to eq([["Do you have head?", nil], ["Which color?", "red"]])
     end
   end
 
@@ -41,19 +50,19 @@ describe Renderer::Questionnaire::PDF do
     let(:strings) { PDF::Inspector::Text.analyze(File.open(pdf.prepare_file).read).strings }
 
     it "prepares PDF with title" do
-      strings.include?("Head sheet").should be_true
+      expect(strings.include?("Head sheet")).to be_truthy
     end
 
     it "prepares PDF with todays date" do
-      strings.include?(I18n::l(Date.today, format: :long)).should be_true
+      expect(strings.include?(I18n::l(Date.today, format: :long))).to be_truthy
     end
 
     it "prepares PDF file with the questions" do
-      strings.include?("Do you have head?").should be_true
+      expect(strings.include?("Do you have head?")).to be_truthy
     end
 
     it "prepares PDF file with the answers" do
-      strings.include?("red").should be_true
+      expect(strings.include?("red")).to be_truthy
     end
   end
 end

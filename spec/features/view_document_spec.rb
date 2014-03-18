@@ -11,19 +11,19 @@ feature "View document" do
   end
 
   scenario "getting to document detail" do
-    find('div.hero-unit').text.should eq 'Some basic document'
-    find('ul.breadcrumb').text.should have_content 'Records'
+    expect(find('div.hero-unit').text).to eq 'Some basic document'
+    expect(find('ul.breadcrumb').text).to have_content 'Records'
   end
 
   scenario "getting back to previous page" do
     click_on 'Your wall'
-    page.should have_content('Your wall')
+    expect(page).to have_content('Your wall')
   end
 
   scenario "getting back to documents type" do
     within('ul.breadcrumb') do
       click_on 'Records'
     end
-    find('ul.breadcrumb').text.should have_content 'Records'
+    expect(find('ul.breadcrumb').text).to have_content 'Records'
   end
 end
