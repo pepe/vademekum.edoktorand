@@ -7,3 +7,4 @@ vendor/gems/*
 .sass-cache/*
 public/stylesheets/application.css
 public/sheets/*
+.bundle/*
